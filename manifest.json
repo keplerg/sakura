@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Copy Sakura Chat Content",
+  "version": "1.0",
+  "description": "Copies the content of Sakura AI chat into the clipboard.",
+  "permissions": ["scripting", "activeTab", "clipboardWrite"],
+  "action": {
+    "default_title": "Copy Sakura Chat content"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/logo.png",
+    "48": "images/logo.png",
+    "128": "images/logo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.sakura.fm/chat/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
