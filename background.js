@@ -31,11 +31,11 @@ async function scrollAndCopyMainPage() {
     return;
   }
 
-  let lastHeight = main.children[0].scrollHeight;
+  let lastHeight = main.querySelector('.px-page').scrollHeight;
   let attempts = 0;
 
   while (attempts < maxScrollAttempts) {
-    main.children[0].children[0].scrollIntoView({
+    main.querySelector('.px-page').scrollIntoView({
       behavior: "smooth",
       block: "start",
       inline: "start"
@@ -44,7 +44,7 @@ async function scrollAndCopyMainPage() {
     await new Promise(resolve => setTimeout(resolve, scrollDelay));
     // console.log('scrolling done');
 
-    const newHeight = main.children[0].scrollHeight;
+    const newHeight = main.querySelector('.px-page').scrollHeight;
     if (newHeight === lastHeight) {
       break; // No more content being loaded
     }
